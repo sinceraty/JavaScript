@@ -5,7 +5,7 @@ JavaScript知识点
 函数表达式：var getName = function(){}<br>
 声明函数：function getName()
 
-## call apply 
+## 委托函数call apply 
 
 call(obj,params1,param2),apply(obj,argments),作用一样，只是调用的方式不一样。
 ```JavaScript
@@ -36,3 +36,18 @@ first(1);
 first(1);
 ```
 其中var first 等于返回的函数，却能访问到变量list。
+##JavaScript精度问题
+原因是有些小数以二进制表示它的位数是无穷的，例如0.1用而二进制表示是000110011001...
+##Math常用函数
+Math.random,生成0~1的随机数<br>
+Math.abs绝对值<br>
+Math.ceil向上取整<br>
+Math.floor向下取整<br>
+##数组常用函数
+array.map(),根据规则重新生成副本
+```JavaScript
+var list=['A','B','C','D'];
+list.map(function(item,index){
+  return item+'你好帅！';
+})
+```
