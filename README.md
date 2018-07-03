@@ -65,16 +65,16 @@ list.map(function(item,index){
 ```
 ### 创建对象的方式
 ```JavaScript
- //字面量创建
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
-    var o4 = Object.create({name:'o4'});
+     //字面量创建
+	   var o1 = {name:'o1'};
+	   var o2 = new Object({name:'o2'});
+	   //构造函数创建
+	   var gen = function(name){
+	     this.name=name
+	   };
+	   var o3 = new gen('o3');
+	   //原型链方式创建
+	   var o4 = Object.create({name:'o4'});
  ```
 ## dom事件
 ### dom事件的级别
