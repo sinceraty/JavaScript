@@ -57,8 +57,20 @@ js一切皆是对象，对象都有原型对象，对象默认继承自其原型
 hasownProperty是Js中唯一处理属性并且不会遍历原型链的方式
 ## dom事件
 ### dom事件的级别
+* dom0 element.onclick=function(){}
+* dom2 element.addEventListener('click',function(){},false)
+* dom3 element.addEventListener('keyup',function(){},false),事件类型增多
 ### dom事件模型
+冒泡和捕获，一个冲下到上，一个从上到下
 ### dom事件流
+
 ### dom事件捕获的具体流程
+* 捕获：window→document→html→body→...
+* 冒泡：相反
 ### Event事件常见应用
+* preventDefault 阻止默认事件
+* stopPropagation 阻止事件冒泡
+* currentTarget 触发
+* target 绑定
+* stopImmediatePropagation 同一个元素绑定多个事件，可以指定让其执行一个，后面不在执行
 ### 自定义事件
