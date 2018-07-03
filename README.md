@@ -70,7 +70,7 @@ hasownProperty是Js中唯一处理属性并且不会遍历原型链的方式
 ### Event事件常见应用
 * preventDefault 阻止默认事件
 * stopPropagation 阻止事件冒泡
-* currentTarget 触发
-* target 绑定
+* currentTarget 绑定
+* target 触发 委托
 * stopImmediatePropagation 同一个元素绑定多个事件，可以指定让其执行一个，后面不在执行
 ### 自定义事件
