@@ -64,7 +64,7 @@ list.map(function(item,index){
   o1._proto_===p//true
 ```
 ### new创建函数过程
-![image](https://github.com/sinceraty/JavaScript/edit/master/JavaScript/new.png)
+![image](https://github.com/sinceraty/JavaScript/blob/master/new.png)
 ### 创建对象的方式
 ```JavaScript
    //字面量创建
