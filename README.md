@@ -55,7 +55,13 @@ list.map(function(item,index){
 * js一切皆是对象，对象都有原型对象，对象默认继承自其原型对象
 * 所有的函数都是Function的实例即new Functon()，Function = new Function()
 * 对象有隐式原型(_proto_)，函数有显示原型（prototype）<br>
- hasownProperty是Js中唯一处理属性并且不会遍历原型链的方式
+* hasownProperty是Js中唯一处理属性并且不会遍历原型链的方式
+* Object.create()，使用原型链的方式去创建对象
+```JavaScript 
+  var p={name:'p'};
+  var o1= Object.create(p);
+  o1._proto_===p//true
+```
 ## dom事件
 ### dom事件的级别
 * dom0 element.onclick=function(){}
