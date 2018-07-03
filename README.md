@@ -52,6 +52,7 @@ list.map(function(item,index){
 })
 ```
 ## 原型
+### 实例，原型，构造函数，原型链
 * js一切皆是对象，对象都有原型对象，对象默认继承自其原型对象
 * 所有的函数都是Function的实例即new Functon()，Function = new Function()
 * 对象有隐式原型(_proto_)，函数有显示原型（prototype）<br>
@@ -62,6 +63,19 @@ list.map(function(item,index){
   var o1= Object.create(p);
   o1._proto_===p//true
 ```
+### 创建对象的方式
+```JavaScript
+ //字面量创建
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+    var o4 = Object.create({name:'o4'});
+ ```
 ## dom事件
 ### dom事件的级别
 * dom0 element.onclick=function(){}
