@@ -86,7 +86,6 @@ list.map(function(item,index){
           this.name = 'parent1';
       }
       Parent1.prototype.say = function () {
-
       };
       function Child1 () {
           Parent1.call(this);
@@ -108,7 +107,6 @@ list.map(function(item,index){
           this.type = 'child2';
       }
       Child2.prototype = new Parent2();
-
       var s1 = new Child2();
       var s2 = new Child2();
       console.log(s1.play, s2.play);
@@ -134,3 +132,5 @@ list.map(function(item,index){
 * target 触发 委托
 * stopImmediatePropagation 同一个元素绑定多个事件，可以指定让其执行一个，后面不在执行
 ### 自定义事件
+    var a=b
+
