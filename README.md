@@ -96,11 +96,12 @@ list.map(function(item,index){
 ```
  
 此方法的确定无法继承原型链
+
 * 借助原型链实现继承
 
 ```JavaScript
-	  function Parent2 () {
-          this.name = 'parent2';
+	function Parent2 () {
+		  this.name = 'parent2';
           this.play = [1, 2, 3];
       }
       function Child2 () {
@@ -112,7 +113,61 @@ list.map(function(item,index){
       console.log(s1.play, s2.play);
       s1.play.push(4);
 ```
-此方法中s1,s2公用一个原型对象，s1.play.push(4)是往原型对象上增加数值，会共享。
+此方法中s1,s2公用一个原型对象，s1.play.push(4)是往原型对象上增加数值，会共享.
+
+* 组合方式继承
+```JavaScript
+	function Parent3 () {
+	  this.name = 'parent3';
+	  this.play = [1, 2, 3];
+	}
+	function Child3 () {
+	  Parent3.call(this);
+	  this.type = 'child3';
+	}
+	Child3.prototype = new Parent3();
+	var s3 = new Child3();
+	var s4 = new Child3();
+	s3.play.push(4);
+	console.log(s3.play, s4.play);
+```
+同时使用2种方式，call方法已经父类的属性继承。原型链也链上了，但是parent的构造函数执行了2次，影响性能。并且分辨s3到底是child创建的还是parent创建的。
+
+* 组合方式优化1
+```JavaScript
+	function Parent4 () {
+	  this.name = 'parent4';
+	  this.play = [1, 2, 3];
+	}
+	function Child4 () {
+	  Parent4.call(this);
+	  this.type = 'child4';
+	}
+	Child4.prototype = Parent4.prototype;
+	var s5 = new Child4();
+	var s6 = new Child4();
+	console.log(s5, s6);
+	console.log(s5 instanceof Child4, s5 instanceof Parent4);
+	console.log(s5.constructor);
+```
+解决了parent构造函数执行2次的问题，但是没有解决实例到底是谁创建的问题，即s4.__proto__.constructor===parent3
+
+* 组合方式优化2
+```JavaScript
+	 function Parent5 () {
+          this.name = 'parent5';
+          this.play = [1, 2, 3];
+      }
+      function Child5 () {
+          Parent5.call(this);
+          this.type = 'child5';
+      }
+      Child5.prototype = Object.create(Parent5.prototype);
+	  Child5.prototype.constructor = Child5();
+```
+使用object.create创建中间原型链，并制定其构造函数，不让其向上查找。
+Parent5.prototype.constructor=Parent5,这条链断了？
+
 ## dom事件
 ### dom事件的级别
 * dom0 element.onclick=function(){}
@@ -132,5 +187,55 @@ list.map(function(item,index){
 * target 触发 委托
 * stopImmediatePropagation 同一个元素绑定多个事件，可以指定让其执行一个，后面不在执行
 ### 自定义事件
-    var a=b
+* 不能进行参数传递
+```JavaScript
+	var custEvent1=new Event('c1');
+	dom.addEventListenner('c1',fun..,false)
+	dom.dispatchEvent(custEvent1);	
+```
+* 传递参数
+```JavaScript
+	var custEvent2 = new CustEvent('c2'{
+		detail:{
+			a:1
+		}
+	});
+	dom.addEventListenner('c2',fun..,false)
+	dom.dispatchEvent(custEvent2);	
+```
+## JS运行机制
+	
+1. 单线程
+2. 任务队列(挂起)
+3. 同步代码会先执行，同步代码执行完之后再解析异步代码，再把异步代码变为同步代码。
 
+## 页面性能
+
+### 代码压缩，Gzip
+1. 代码合并压缩，容器使用Gzip等
+### 非核心代码异步加载
+1. 动态脚本（js中动态添加标签）
+2. defer 引入js语句中加入 defer，多个顺序执行。文档解析完后执行
+3. async 引入语句中加入 async,多个执行顺序不一定。
+### 浏览器缓存
+1. 强缓存
+2. 协商缓存
+### CDN
+### DNS预解析 meta标签中强制开启，link标签中解析域名
+```html
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="http://xxxxx.com" />
+```
+## 错误监控
+
+### 代码错误
+   代码在运行时发生错误<br>
+
+1. try catch
+2. window.onerror (dom0,也可以使用dom2方式)
+### 资源加载错误
+1. performance.getEntries();
+2. 捕获方式（冒泡方式获取不到）;
+### 错误上报
+1. AJAX
+2. Image对象，new Image().src="https://www.baidu.com/error?a='error'"
