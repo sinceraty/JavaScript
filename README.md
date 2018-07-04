@@ -63,6 +63,7 @@ list.map(function(item,index){
   var o1= Object.create(p);
   o1._proto_===p//true
 ```
+
 ### new创建函数过程
 ![image](https://github.com/sinceraty/JavaScript/blob/master/new.png)
 ### 创建对象的方式
@@ -78,6 +79,42 @@ list.map(function(item,index){
    //原型链方式创建
    var o4 = Object.create({name:'o4'});
  ```
+### 继承的方式
+* 借助构造函数实现继承
+```JavaScript
+      function Parent1 () {
+          this.name = 'parent1';
+      }
+      Parent1.prototype.say = function () {
+
+      };
+      function Child1 () {
+          Parent1.call(this);
+          this.type = 'child1';
+      }
+      console.log(new Child1());
+	  //new Child1().say() 报错
+```
+ 
+此方法的确定无法继承原型链
+* 借助原型链实现继承
+
+```JavaScript
+	  function Parent2 () {
+          this.name = 'parent2';
+          this.play = [1, 2, 3];
+      }
+      function Child2 () {
+          this.type = 'child2';
+      }
+      Child2.prototype = new Parent2();
+
+      var s1 = new Child2();
+      var s2 = new Child2();
+      console.log(s1.play, s2.play);
+      s1.play.push(4);
+```
+此方法中s1,s2公用一个原型对象，s1.play.push(4)是往原型对象上增加数值，会共享。
 ## dom事件
 ### dom事件的级别
 * dom0 element.onclick=function(){}
