@@ -154,7 +154,7 @@ list.map(function(item,index){
 
 * 组合方式优化2
 ```JavaScript
-	 function Parent5 () {
+	  function Parent5 () {
           this.name = 'parent5';
           this.play = [1, 2, 3];
       }
