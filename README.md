@@ -1,5 +1,9 @@
 # JavaScript
 JavaScript知识点
+## 运算符
+### 取反运算符~
+按位操作符（Bitwise operators） 将其操作数（operands）当作32位的比特序列（由0和1组成）
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators "MDN"),所以数值过大可能会被截取掉，数字-2147483648 和 2147483647 是32位有符号数字所能表示的最小和最大整数。负数会多一位表示，首位表示符号。
 ## 变量声明提升
 所有声明变量或声明函数都会被提升到当前函数的顶部<br>
 函数表达式：var getName = function(){}<br>
