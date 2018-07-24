@@ -1,0 +1,24 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> 页面名称 </title>
+<style type="text/css">
+#div {
+    background-color: #ccc;
+    width: 170px;
+}
+</style>
+</head>
+<body>
+<div id="div"><span id="text">在html中css如何做到多行文本最后有个省略号紧随其后还有个超链接是同一行的</span><a href="#">链接</a></div>
+<script type="text/javascript">
+var obj = document.getElementById("div");
+var span = document.getElementById("text");
+while (obj.offsetHeight>50) {
+    span.innerHTML = span.innerHTML.replace(/.(\.\.\.)?$/,"...")
+}
+</script>
+</body>
+</html>
