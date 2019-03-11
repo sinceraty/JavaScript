@@ -40,14 +40,14 @@ first(1);
 first(1);
 ```
 其中var first 等于返回的函数，却能访问到变量list。
-##JavaScript精度问题
+## JavaScript精度问题
 原因是有些小数以二进制表示它的位数是无穷的，例如0.1用而二进制表示是000110011001...
-##Math常用函数
+## Math常用函数
 Math.random,生成0~1的随机数<br>
 Math.abs绝对值<br>
 Math.ceil向上取整<br>
 Math.floor向下取整<br>
-##数组常用函数
+## 数组常用函数
 array.map(),根据规则重新生成副本
 ```JavaScript
 var list=['A','B','C','D'];
@@ -82,7 +82,7 @@ list.map(function(item,index){
    var o3 = new gen('o3');
    //原型链方式创建
    var o4 = Object.create({name:'o4'});
- ```
+```
 ### 继承的方式
 * 借助构造函数实现继承
 ```JavaScript
@@ -98,7 +98,7 @@ list.map(function(item,index){
       console.log(new Child1());
 	  //new Child1().say() 报错
 ```
- 
+
 此方法的确定无法继承原型链
 
 * 借助原型链实现继承
@@ -208,7 +208,7 @@ Parent5.prototype.constructor=Parent5,这条链断了？
 	dom.dispatchEvent(custEvent2);	
 ```
 ## JS运行机制
-	
+
 1. 单线程
 2. 任务队列(挂起)
 3. 同步代码会先执行，同步代码执行完之后再解析异步代码，再把异步代码变为同步代码。
