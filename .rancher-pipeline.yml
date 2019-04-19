@@ -1,0 +1,18 @@
+stages:
+- name: compile
+  steps:
+  - runScriptConfig:
+      image: node:latest
+      shellScript: npm run build
+- name: publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: vue-layout
+      registry: 192.168.199.130
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+timeout: 60
